@@ -1,0 +1,24 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Post {
+  content: String
+  id: Int!
+  likes: Int
+  title: String
+}
+
+type Query {
+  author(id: Int!): User!
+  getAllPosts: [Post!]!
+  getAllUsers: [User!]!
+}
+
+type User {
+  age: Int
+  firstName: String
+  id: Int!
+  lastName: String
+  posts: [Post!]!
+}

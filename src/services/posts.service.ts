@@ -1,3 +1,6 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
 export class PostsService {
   posts = [
     { id: 1, title: 'asd', content: 'asd1' },

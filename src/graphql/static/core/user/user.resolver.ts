@@ -11,7 +11,7 @@ import { UsersService } from 'src/services/users.service';
 import { User } from './user.model';
 
 @Resolver(() => User)
-export class AuthorsResolver {
+export class UsersResolver {
   constructor(
     private usersServices: UsersService,
     private postsService: PostsService,
