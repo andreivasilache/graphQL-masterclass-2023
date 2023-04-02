@@ -6,8 +6,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { join } from 'path';
-import { PostModule } from './graphql/static/core/post/post.module';
-import { UserModule } from './graphql/static/core/user/user.module';
+import { PostModule } from './graphql/core/post/post.module';
+import { UserModule } from './graphql/core/user/user.module';
 
 @Module({
   imports: [

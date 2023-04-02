@@ -8,7 +8,18 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export interface CreatePostInput {
+    authorID: number;
+    content: string;
+    title: string;
+}
+
+export interface IMutation {
+    createPost(postFormData: CreatePostInput): Post | Promise<Post>;
+}
+
 export interface Post {
+    authorID: number;
     content?: Nullable<string>;
     id: number;
     likes?: Nullable<number>;
@@ -16,9 +27,9 @@ export interface Post {
 }
 
 export interface IQuery {
-    author(id: number): User | Promise<User>;
     getAllPosts(): Post[] | Promise<Post[]>;
     getAllUsers(): User[] | Promise<User[]>;
+    getUser(id: number): User | Promise<User>;
 }
 
 export interface User {

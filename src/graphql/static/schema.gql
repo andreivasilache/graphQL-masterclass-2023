@@ -2,7 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreatePostInput {
+  authorID: Float!
+  content: String!
+  title: String!
+}
+
+type Mutation {
+  createPost(postFormData: CreatePostInput!): Post!
+}
+
 type Post {
+  authorID: Int!
   content: String
   id: Int!
   likes: Int
@@ -10,9 +21,9 @@ type Post {
 }
 
 type Query {
-  author(id: Int!): User!
   getAllPosts: [Post!]!
   getAllUsers: [User!]!
+  getUser(id: Int!): User!
 }
 
 type User {

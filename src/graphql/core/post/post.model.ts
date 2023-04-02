@@ -5,6 +5,9 @@ export class Post {
   @Field(() => Int)
   id: number;
 
+  @Field(() => Int)
+  authorID: number;
+
   @Field({ nullable: true })
   title?: string;
 
