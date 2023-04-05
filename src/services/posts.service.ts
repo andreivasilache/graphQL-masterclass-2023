@@ -14,6 +14,10 @@ export class PostsService {
     return this.postModel.find({ authorID }).exec();
   }
 
+  async getPostById(postID: Types.ObjectId) {
+    return this.postModel.findById(postID).exec();
+  }
+
   async createPost(post: Omit<PostMongooseModel, '_id'>) {
     const newUser = new this.postModel(post);
     return newUser.save();

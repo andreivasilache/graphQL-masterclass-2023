@@ -7,9 +7,6 @@ export class PostGraphQlModel implements PostMongooseModel {
   @Field(() => String)
   _id: Types.ObjectId;
 
-  @Field(() => String)
-  authorID: string;
-
   @Field()
   title: string;
 

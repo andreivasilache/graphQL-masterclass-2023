@@ -18,6 +18,12 @@ export class UserMongooseModel {
 
   @Prop()
   age: number;
+
+  @Prop()
+  postsIDs: Types.ObjectId[];
+
+  @Prop()
+  booksIDs: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserMongooseModel);

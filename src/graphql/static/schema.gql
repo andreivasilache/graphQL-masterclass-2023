@@ -2,8 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type BookGraphQlModel {
+  author: String!
+  country: String!
+  id: String!
+  imageLink: String!
+  language: String!
+  link: String!
+  pages: Float!
+  title: String!
+  year: Float!
+}
+
 input CreatePostInput {
-  authorID: String!
+  authorID: String
   content: String!
   likes: Float!
   title: String!
@@ -22,21 +34,26 @@ type Mutation {
 
 type PostGraphQlModel {
   _id: String!
-  authorID: String!
   content: String!
   likes: Int
   title: String!
 }
 
 type Query {
+  getAllBooks: [BookGraphQlModel!]!
   getAllPosts: [PostGraphQlModel!]!
   getAllUsers: [UserGraphQLModel!]!
+  getBook(bookID: String!): BookGraphQlModel!
+  seedUsers: UserGraphQLModel!
 }
 
 type UserGraphQLModel {
   _id: String!
   age: Int
+  books: [BookGraphQlModel!]
+  booksIDs: [String!]!
   firstName: String
   lastName: String
   posts: [PostGraphQlModel!]
+  postsIDs: [String!]!
 }

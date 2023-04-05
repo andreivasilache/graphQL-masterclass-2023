@@ -11,9 +11,10 @@ import {
   PostMongooseModel,
   PostSchema,
 } from 'src/mongoose/schemas/post.schema';
+import { BooksService } from 'src/services/books.service';
 
 @Module({
-  providers: [UsersResolver, UsersService, PostsService],
+  providers: [UsersResolver, UsersService, PostsService, BooksService],
   imports: [
     MongooseModule.forFeature([
       { name: UserMongooseModel.name, schema: UserSchema },

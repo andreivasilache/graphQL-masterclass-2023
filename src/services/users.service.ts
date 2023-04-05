@@ -22,4 +22,10 @@ export class UsersService {
     const newUser = new this.userModel(user);
     return newUser.save();
   }
+
+  async addPostIDToUser(_id: Types.ObjectId, postID: Types.ObjectId) {
+    return this.userModel
+      .findOneAndUpdate({ _id }, { $push: { postsIDs: postID } })
+      .exec();
+  }
 }

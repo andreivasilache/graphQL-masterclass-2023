@@ -8,9 +8,7 @@ export type PostDocument = HydratedDocument<PostMongooseModel>;
 })
 export class PostMongooseModel {
   _id: Types.ObjectId;
-  @Prop()
-  /**Declare this as a string instead of ObjectId, in this way we are going to be able to query data more easily from playground / create mock posts */
-  authorID: string;
+
   @Prop()
   title: string;
   @Prop()

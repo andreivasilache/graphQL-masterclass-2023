@@ -10,6 +10,7 @@ import { PostModule } from './graphql/core/post/post.module';
 import { UserModule } from './graphql/core/user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { BookModule } from './graphql/core/book/book.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ConfigModule } from '@nestjs/config';
     // graph ql modules
     PostModule,
     UserModule,
+    BookModule,
 
     // mongoose modules
     MongooseModule.forRoot(process.env.MONGODB_API),
