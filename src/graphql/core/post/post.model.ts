@@ -1,18 +1,20 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Types } from 'mongoose';
+import { PostMongooseModel } from 'src/mongoose/schemas/post.schema';
 
 @ObjectType()
-export class Post {
-  @Field(() => Int)
-  id: number;
+export class PostGraphQlModel implements PostMongooseModel {
+  @Field(() => String)
+  _id: Types.ObjectId;
 
-  @Field(() => Int)
-  authorID: number;
+  @Field(() => String)
+  authorID: string;
 
-  @Field({ nullable: true })
-  title?: string;
+  @Field()
+  title: string;
 
-  @Field({ nullable: true })
-  content?: string;
+  @Field()
+  content: string;
 
   @Field(() => Int, { nullable: true })
   likes?: number;

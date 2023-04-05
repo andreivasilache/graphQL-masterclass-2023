@@ -16,12 +16,12 @@ import { ConfigModule } from '@nestjs/config';
     // core modules
     ConfigModule.forRoot(),
 
-    // mongoose modules
-    MongooseModule.forRoot(process.env.MONGODB_API),
-
     // graph ql modules
     PostModule,
     UserModule,
+
+    // mongoose modules
+    MongooseModule.forRoot(process.env.MONGODB_API),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/graphql/static/schema.gql'),

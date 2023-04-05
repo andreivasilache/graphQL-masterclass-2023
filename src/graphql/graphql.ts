@@ -9,35 +9,42 @@
 /* eslint-disable */
 
 export interface CreatePostInput {
-    authorID: number;
+    authorID: string;
     content: string;
+    likes: number;
     title: string;
 }
 
-export interface IMutation {
-    createPost(postFormData: CreatePostInput): Post | Promise<Post>;
+export interface CreateUserInput {
+    age: number;
+    firstName: string;
+    lastName: string;
 }
 
-export interface Post {
-    authorID: number;
-    content?: Nullable<string>;
-    id: number;
+export interface IMutation {
+    createPost(postFormData: CreatePostInput): PostGraphQlModel | Promise<PostGraphQlModel>;
+    createUser(userData: CreateUserInput): UserGraphQLModel | Promise<UserGraphQLModel>;
+}
+
+export interface PostGraphQlModel {
+    _id: string;
+    authorID: string;
+    content: string;
     likes?: Nullable<number>;
-    title?: Nullable<string>;
+    title: string;
 }
 
 export interface IQuery {
-    getAllPosts(): Post[] | Promise<Post[]>;
-    getAllUsers(): User[] | Promise<User[]>;
-    getUser(id: number): User | Promise<User>;
+    getAllPosts(): PostGraphQlModel[] | Promise<PostGraphQlModel[]>;
+    getAllUsers(): UserGraphQLModel[] | Promise<UserGraphQLModel[]>;
 }
 
-export interface User {
+export interface UserGraphQLModel {
+    _id: string;
     age?: Nullable<number>;
     firstName?: Nullable<string>;
-    id: number;
     lastName?: Nullable<string>;
-    posts: Post[];
+    posts?: Nullable<PostGraphQlModel[]>;
 }
 
 type Nullable<T> = T | null;

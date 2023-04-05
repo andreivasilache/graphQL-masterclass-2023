@@ -1,19 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/graphql/graphql';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model, Types } from 'mongoose';
+import { UserMongooseModel } from 'src/mongoose/schemas/user.schema';
 
 @Injectable()
 export class UsersService {
-  users = [
-    { id: 1, firstName: 'John', lastName: 'Doe', age: 25 },
-    { id: 2, firstName: 'Jane', lastName: 'Doe', age: 23 },
-    { id: 3, firstName: 'Jim', lastName: 'Beam', age: 30 },
-  ];
+  constructor(
+    @InjectModel(UserMongooseModel.name)
+    private userModel: Model<UserMongooseModel>,
+  ) {}
 
-  async getUser(id: number) {
-    return this.users.find((user) => user.id === id);
+  async getUser(_id: Types.ObjectId) {
+    return this.userModel.findOne({ _id }).exec();
   }
 
-  getUsers() {
-    return this.users;
+  async getUsers() {
+    return this.userModel.find().exec();
+  }
+
+  async createUser(user: Omit<UserMongooseModel, '_id'>) {
+    const newUser = new this.userModel(user);
+    return newUser.save();
   }
 }

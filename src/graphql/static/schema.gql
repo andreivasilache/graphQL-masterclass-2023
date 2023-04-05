@@ -3,33 +3,40 @@
 # ------------------------------------------------------
 
 input CreatePostInput {
-  authorID: Float!
+  authorID: String!
   content: String!
+  likes: Float!
   title: String!
 }
 
-type Mutation {
-  createPost(postFormData: CreatePostInput!): Post!
+input CreateUserInput {
+  age: Float!
+  firstName: String!
+  lastName: String!
 }
 
-type Post {
-  authorID: Int!
-  content: String
-  id: Int!
+type Mutation {
+  createPost(postFormData: CreatePostInput!): PostGraphQlModel!
+  createUser(userData: CreateUserInput!): UserGraphQLModel!
+}
+
+type PostGraphQlModel {
+  _id: String!
+  authorID: String!
+  content: String!
   likes: Int
-  title: String
+  title: String!
 }
 
 type Query {
-  getAllPosts: [Post!]!
-  getAllUsers: [User!]!
-  getUser(id: Int!): User!
+  getAllPosts: [PostGraphQlModel!]!
+  getAllUsers: [UserGraphQLModel!]!
 }
 
-type User {
+type UserGraphQLModel {
+  _id: String!
   age: Int
   firstName: String
-  id: Int!
   lastName: String
-  posts: [Post!]!
+  posts: [PostGraphQlModel!]
 }

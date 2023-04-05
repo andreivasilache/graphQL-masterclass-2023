@@ -1,20 +1,22 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 
-export type PostDocument = HydratedDocument<Post>;
+export type PostDocument = HydratedDocument<PostMongooseModel>;
 
-@Schema()
-export class Post {
+@Schema({
+  collection: 'posts',
+})
+export class PostMongooseModel {
+  _id: Types.ObjectId;
   @Prop()
-  id: number;
+  /**Declare this as a string instead of ObjectId, in this way we are going to be able to query data more easily from playground / create mock posts */
+  authorID: string;
   @Prop()
   title: string;
   @Prop()
   content: string;
   @Prop()
-  authorID: number;
-  @Prop()
-  likes: number;
+  likes?: number;
 }
 
-export const PostSchema = SchemaFactory.createForClass(Post);
+export const PostSchema = SchemaFactory.createForClass(PostMongooseModel);
